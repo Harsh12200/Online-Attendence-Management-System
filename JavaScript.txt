@@ -1,0 +1,25 @@
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    let email = document.getElementById('email').value;
+    let password = document.getElementById('password').value;
+    
+    // Validate Email
+    if (!validateEmail(email)) {
+        document.getElementById('email').classList.add('is-invalid');
+    } else {
+        document.getElementById('email').classList.remove('is-invalid');
+    }
+    
+    // Validate Password
+    if (password.trim() === "") {
+        document.getElementById('password').classList.add('is-invalid');
+    } else {
+        document.getElementById('password').classList.remove('is-invalid');
+    }
+});
+
+function validateEmail(email) {
+    const re = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    return re.test(String(email).toLowerCase());
+}
